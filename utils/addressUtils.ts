@@ -1,37 +1,45 @@
-import * as fs from 'fs';
-import { promisify } from 'util';
+import * as fs from "fs";
+import * as path from "path";
+import { promisify } from "util";
 
-const getAddressPath = (networkName: string) => `${__dirname}/../addressList/${networkName}.json`;
+const getAddressPath = (networkName: string) =>
+  path.join(__dirname, `/../addressList/${networkName}.json`);
 
-const getAddressList = async (networkName: string): Promise<Record<string, string>> => {
-    const addressPath = getAddressPath(networkName);
-    try {
-        const data = await promisify(fs.readFile)(addressPath)
-        return JSON.parse(data.toString());
-    } catch (e) {
-        return {};
-    }
-}
+const getAddressList = async (
+  networkName: string
+): Promise<Record<string, string>> => {
+  const addressPath = getAddressPath(networkName);
+  try {
+    const data = await promisify(fs.readFile)(addressPath);
+    return JSON.parse(data.toString());
+  } catch (e) {
+    return {};
+  }
+};
 
-const saveAddresses = async (networkName: string, newAddrList: Record<string, string>) => {
-    const addressPath = getAddressPath(networkName);
-    const addressList = await getAddressList(networkName);
+const saveAddresses = async (
+  networkName: string,
+  newAddrList: Record<string, string>
+) => {
+  const addressPath = getAddressPath(networkName);
+  const addressList = await getAddressList(networkName);
 
-    const pathArr = addressPath.split('/');
-    const dirPath = [...pathArr].slice(0, pathArr.length - 1).join('/');
+  const pathArr = addressPath.split("/");
+  const dirPath = [...pathArr].slice(0, pathArr.length - 1).join("/");
 
-    if (!fs.existsSync(dirPath))
-        fs.mkdirSync(dirPath);
+  if (!fs.existsSync(dirPath)) fs.mkdirSync(dirPath);
 
-    return fs.writeFileSync(addressPath, JSON.stringify({
-        ...addressList,
-        ...newAddrList
-    }))
-}
-
+  return fs.writeFileSync(
+    addressPath,
+    JSON.stringify({
+      ...addressList,
+      ...newAddrList,
+    })
+  );
+};
 
 export default {
-    getAddressPath,
-    getAddressList,
-    saveAddresses,
-}
+  getAddressPath,
+  getAddressList,
+  saveAddresses,
+};

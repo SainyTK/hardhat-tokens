@@ -11,7 +11,9 @@ import "solidity-coverage";
 dotenv.config();
 
 const getAccounts = () => {
-  return process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [];
+  const arr = Object.entries(process.env);
+  const privateKeys = arr.filter(([key,val]) => key.includes(`PRIVATE_KEY`)).map(([key, val]) => val || '');
+  return privateKeys;
 }
 
 const config: HardhatUserConfig = {
@@ -19,6 +21,10 @@ const config: HardhatUserConfig = {
   networks: {
     ropsten: {
       url: process.env.ROPSTEN_URL || "",
+      accounts: getAccounts()
+    },
+    kovan: {
+      url: process.env.KOVAN_URL || "",
       accounts: getAccounts()
     },
     kubchain_test: {

@@ -20,5 +20,11 @@ module.exports = {
       "error",
       { ignores: ["modules"] },
     ],
+    "node/no-extraneous-import": [
+      "error",
+      {
+        allowModules: ["@ethersproject"],
+      },
+    ],
   },
 };
