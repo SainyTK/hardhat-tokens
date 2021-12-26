@@ -22,10 +22,10 @@ const grantPermission = async (contractName: string) => {
 
 async function main() {
   await grantPermission("KBTC");
-  await grantPermission("KETH");
-  await grantPermission("KUSDT");
-  await grantPermission("KUSDC");
-  await grantPermission("KDAI");
+  // await grantPermission("KETH");
+  // await grantPermission("KUSDT");
+  // await grantPermission("KUSDC");
+  // await grantPermission("KDAI");
 }
 
 // We recommend this pattern to be able to use async/await everywhere

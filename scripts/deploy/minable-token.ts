@@ -5,6 +5,11 @@ import addressUtils from "../../utils/addressUtils";
 export async function deployMinableToken(
   name_: string,
   symbol_: string,
+  _decimals: BigNumberish,
+  committee_: string,
+  adminRouter_: string,
+  kyc_: string,
+  acceptedKycLevel_: BigNumberish,
   faucetRate_: BigNumberish,
   maxElapsed_: BigNumberish,
   overrides?: Overrides & { from?: string | Promise<string> }
@@ -15,6 +20,11 @@ export async function deployMinableToken(
     ? await MinableToken.deploy(
         name_,
         symbol_,
+        _decimals,
+        committee_,
+        adminRouter_,
+        kyc_,
+        acceptedKycLevel_,
         faucetRate_,
         maxElapsed_,
         addressList.TimeCounter,
@@ -23,6 +33,11 @@ export async function deployMinableToken(
     : await MinableToken.deploy(
         name_,
         symbol_,
+        _decimals,
+        committee_,
+        adminRouter_,
+        kyc_,
+        acceptedKycLevel_,
         faucetRate_,
         maxElapsed_,
         addressList.TimeCounter
