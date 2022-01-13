@@ -53,8 +53,10 @@ contract MinableToken is MintableToken {
         counter.stampLastAction(msg.sender);
     }
 
-    function mineBKNext(address bkNextAddr) public onlySuperAdmin {
-        _mint(bkNextAddr, getMiningRewardInternal(bkNextAddr));
-        counter.stampLastAction(bkNextAddr);
+    function mineBKNext(address _bitkubnext) public onlySuperAdmin 
+    {
+        require(kyc.kycsLevel(_bitkubnext) >= acceptedKycLevel, "only Bitkub Next user");
+        _mint(_bitkubnext, getMiningRewardInternal(_bitkubnext));
+        counter.stampLastAction(_bitkubnext);
     }
 }

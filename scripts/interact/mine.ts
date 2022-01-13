@@ -12,12 +12,12 @@ const mine = async (contractName: string, account: string) => {
     const decimals = await token.decimals();
 
     console.log(`Before mine: `, await token.balanceOf(account).then(res => formatUnits(res, decimals)), contractName);
-    await token["mine(address)"](account).then(tx => tx.wait());
+    await token.mineBKNext(account).then(tx => tx.wait());
     console.log(`After mine: `, await token.balanceOf(account).then(res => formatUnits(res, decimals)), contractName);
 }
 
 async function main() {
-    const address = '0x73D8F731eC0d3945d807a904Bf93954B82b0d594';
+    const address = '0xcdCc562088F99f221B0C3BB1EDcFD5A9646D0B25';
     await mine('KBTC', address);
 }
 
