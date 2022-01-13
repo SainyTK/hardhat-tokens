@@ -7,7 +7,7 @@ import "./interfaces/IKToken.sol";
 import "../pause/Pausable.sol";
 import "../committee/KAP20Committee.sol";
 import "../admin/Authorization.sol";
-import "../kyc//KYCHandler.sol";
+import "../kyc/KYCHandler.sol";
 import "../blacklist/Blacklist.sol";
 
 contract KAP20 is IKAP20, IKToken, Pausable, KAP20Committee, Authorization, KYCHandler, Blacklist {
