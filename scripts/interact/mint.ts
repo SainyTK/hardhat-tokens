@@ -18,12 +18,12 @@ const mint = async (contractName: string, account: string, amount: BigNumberish)
 }
 
 async function main() {
-    const address = '0x73D8F731eC0d3945d807a904Bf93954B82b0d594';
-    // await mint('KBTC', address, parseEther('4'));
-    // await mint('KETH', address, parseEther('50'));
-    await mint('KUSDT', address, parseEther('10'));
-    // await mint('KUSDC', address, parseEther('200000'));
-    // await mint('KDAI', address, parseEther('200000'));
+    const address = "0x31c2544178f8E8F7F4317247e1dE14591945f1CB";
+    await mint('KBTC', address, parseEther('20'));
+    await mint('KETH', address, parseEther('300'));
+    await mint('KUSDT', address, parseEther('700000'));
+    await mint('KUSDC', address, parseEther('700000'));
+    await mint('KDAI', address, parseEther('700000'));
 }
 
 // We recommend this pattern to be able to use async/await everywhere

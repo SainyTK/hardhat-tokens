@@ -5,7 +5,7 @@ import "./interfaces/IAdminProjectRouter.sol";
 
 abstract contract Authorization {
     IAdminProjectRouter public adminRouter;
-    string public constant PROJECT = "token";
+    string public constant PROJECT = "yuemmai";
 
     modifier onlySuperAdmin() {
         require(

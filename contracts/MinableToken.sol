@@ -21,7 +21,17 @@ contract MinableToken is MintableToken {
         uint256 faucetRate_,
         uint256 maxElapsed_,
         address counter_
-    ) MintableToken(name_, symbol_, _decimals, committee_, adminRouter_, kyc_, acceptedKycLevel_) {
+    )
+        MintableToken(
+            name_,
+            symbol_,
+            _decimals,
+            committee_,
+            adminRouter_,
+            kyc_,
+            acceptedKycLevel_
+        )
+    {
         require(
             faucetRate_ > 0,
             "MinableToken: faucet rate must be greater than 0"
@@ -36,11 +46,15 @@ contract MinableToken is MintableToken {
         counter = TimeCounter(counter_);
     }
 
-    function getMiningReward() public view returns (uint256) {
-        return getMiningRewardInternal(msg.sender);
+    function getMiningReward(address user) public view returns (uint256) {
+        return getMiningRewardInternal(user);
     }
 
-    function getMiningRewardInternal(address user) internal view returns (uint256) {
+    function getMiningRewardInternal(address user)
+        internal
+        view
+        returns (uint256)
+    {
         uint256 actualElapsed = counter.getElapsedTimeOf(user);
         uint256 elapsed = actualElapsed > maxElapsed
             ? maxElapsed
@@ -49,13 +63,15 @@ contract MinableToken is MintableToken {
     }
 
     function mine() public {
-        _mint(msg.sender, getMiningReward());
+        _mint(msg.sender, getMiningReward(msg.sender));
         counter.stampLastAction(msg.sender);
     }
 
-    function mineBKNext(address _bitkubnext) public onlySuperAdmin 
-    {
-        require(kyc.kycsLevel(_bitkubnext) >= acceptedKycLevel, "only Bitkub Next user");
+    function mineBKNext(address _bitkubnext) public onlySuperAdmin {
+        require(
+            kyc.kycsLevel(_bitkubnext) >= acceptedKycLevel,
+            "only Bitkub Next user"
+        );
         _mint(_bitkubnext, getMiningRewardInternal(_bitkubnext));
         counter.stampLastAction(_bitkubnext);
     }
