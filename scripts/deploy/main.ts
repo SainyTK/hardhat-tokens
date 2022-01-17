@@ -14,9 +14,9 @@ async function main() {
 
   const acceptedKycLevel = 4;
 
-  await deployTimeCounter();
+  // await deployTimeCounter();
 
-  await deployKKUB(committee, adminRouter, kyc, acceptedKycLevel);
+  // await deployKKUB(committee, adminRouter, kyc, acceptedKycLevel);
 
   await deployMinableToken(
     "Bitkub-Peg BTC",

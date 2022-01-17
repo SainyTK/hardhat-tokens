@@ -12,7 +12,7 @@ const mine = async (contractName: string, account: string) => {
     const decimals = await token.decimals();
 
     console.log(`Before mine: `, await token.balanceOf(account).then(res => formatUnits(res, decimals)), contractName);
-    await token.mineBKNext(account).then(tx => tx.wait());
+    await token.mine().then(tx => tx.wait());
     console.log(`After mine: `, await token.balanceOf(account).then(res => formatUnits(res, decimals)), contractName);
 }
 
