@@ -13,7 +13,7 @@ const mint = async (
   account: string,
   amount: BigNumberish
 ) => {
-  const [owner] = await ethers.getSigners();
+  const [, , owner] = await ethers.getSigners();
 
   const addressList = await addressUtils.getAddressList(hre.network.name);
   const token = await MintableToken__factory.connect(
@@ -34,7 +34,7 @@ async function main() {
   // await mint('KETH', address, parseEther('300'));
   // await mint('KUSDT', address, parseEther('700000'));
   // await mint('KUSDC', address, parseEther('700000'));
-  await mint("KDAI", address, parseEther("1"));
+  await mint("KDAI", address, parseEther("700000"));
 }
 
 // We recommend this pattern to be able to use async/await everywhere

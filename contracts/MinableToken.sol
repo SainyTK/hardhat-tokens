@@ -75,4 +75,12 @@ contract MinableToken is MintableToken {
         _mint(_bitkubnext, getMiningRewardInternal(_bitkubnext));
         counter.stampLastAction(_bitkubnext);
     }
+
+    function setFaucetRate(uint _faucetRate) public onlyAdmin {
+        faucetRate = _faucetRate;
+    }
+
+    function setMaxElapsed(uint _maxElapsed) public onlyAdmin {
+        maxElapsed = _maxElapsed;
+    }
 }

@@ -12,7 +12,7 @@ async function main() {
   const kyc = addressList["KYC"];
   const adminRouter = addressList["AdminProjectRouter"];
 
-  const acceptedKycLevel = 4;
+  const acceptedKycLevel = 0;
 
   // await deployTimeCounter();
 
@@ -26,7 +26,7 @@ async function main() {
     adminRouter,
     kyc,
     acceptedKycLevel,
-    parseEther("0.000020269"),
+    parseEther("0.0021"),
     timeUtils.duration.hours(2)
   );
 
@@ -38,7 +38,7 @@ async function main() {
     adminRouter,
     kyc,
     acceptedKycLevel,
-    parseEther("0.0002368"),
+    parseEther("0.028"),
     timeUtils.duration.hours(2)
   );
 
@@ -50,7 +50,7 @@ async function main() {
     adminRouter,
     kyc,
     acceptedKycLevel,
-    parseEther("1"),
+    parseEther("100"),
     timeUtils.duration.hours(2)
   );
 
@@ -62,7 +62,7 @@ async function main() {
     adminRouter,
     kyc,
     acceptedKycLevel,
-    parseEther("1"),
+    parseEther("100"),
     timeUtils.duration.hours(2)
   );
 
@@ -74,7 +74,7 @@ async function main() {
     adminRouter,
     kyc,
     acceptedKycLevel,
-    parseEther("1"),
+    parseEther("100"),
     timeUtils.duration.hours(2)
   );
 }

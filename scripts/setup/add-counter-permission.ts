@@ -11,6 +11,9 @@ const grantPermission = async (contractName: string) => {
     owner
   );
 
+  console.log({owner: owner.address});
+  console.log("Owner: ", await counter.owner());
+
   await counter
     ._grantPermission(addressList[contractName])
     .then((tx) => tx.wait());
