@@ -4,28 +4,32 @@ import hre from "hardhat";
 import { deployMinableToken } from "./minable-token";
 import { parseEther } from "ethers/lib/utils";
 import timeUtils from "../../utils/timeUtils";
+import { deployTestERC20 } from "./test-erc20";
 
 async function main() {
-  const addressList = await addressUtils.getAddressList(hre.network.name);
-  const committee = addressList["Committee"];
-  const kyc = addressList["KYC"];
-  const adminRouter = addressList["AdminProjectRouter"];
+
+  await deployTestERC20("Wisdom Token", "WIS");
+
+  // const addressList = await addressUtils.getAddressList(hre.network.name);
+  // const committee = addressList["Committee"];
+  // const kyc = addressList["KYC"];
+  // const adminRouter = addressList["AdminProjectRouter"];
 
   // await deployTimeCounter();
 
   // await deployWKUB();
 
-  await deployMinableToken(
-    "Bitkub-Peg BTC",
-    "KBTC",
-    18,
-    committee,
-    adminRouter,
-    kyc,
-    4,
-    parseEther("0.000020269"),
-    timeUtils.duration.hours(2)
-  );
+  // await deployMinableToken(
+  //   "Bitkub-Peg BTC",
+  //   "KBTC",
+  //   18,
+  //   committee,
+  //   adminRouter,
+  //   kyc,
+  //   4,
+  //   parseEther("0.000020269"),
+  //   timeUtils.duration.hours(2)
+  // );
 
   // await deployMinableToken(
   //     "Bitkub-Peg ETH",
